@@ -1,21 +1,35 @@
 import AddMovie from "./components/AddMovie";
 import LoginButton from "./assets/LoginButton.svg"
 import MovieContainer from "./components/MovieContainer";
-import React, { useState } from "react";
-
+import React, { useState, useRef } from "react";
+import Lottie from "lottie-web"; // Import Lottie library
 function Homepage(){
+
+
+    
     const [isScrolling,setIsScrolling]=useState(false);
     const [isfog,setfog]=useState(false);
+    const [isloading,setloader]=useState(false);
+    const [isdisplayselected,setselected]=useState(false);
     const toggleScroll = () => {
         setIsScrolling(true); // Start scrolling
         setfog(false);
+        setloader(false);
+        setselected(false);
         setTimeout(() => {
             setfog(true);
+        }, 3000);
+        setTimeout(() => {
+            setloader(true);
         }, 3000);
         // Stop scrolling automatically after 5 seconds
         setTimeout(() => {
             setIsScrolling(false);
+            setloader(false);
         }, 5000);
+        setTimeout(() => {
+            setselected(true);
+        },4900);
     };
     return(
         <>
@@ -28,10 +42,11 @@ function Homepage(){
                 </h1>
                 <h2>Your Movie Bucket List</h2>
                 <AddMovie />
-                <MovieContainer scroll={isScrolling} fog={isfog} />
+                <MovieContainer scroll={isScrolling} fog={isfog} loading={isloading} selected={isdisplayselected}/>
                 <button onClick={toggleScroll} className="scroll-btn">
                     Spin
                 </button>
+
 
             </div>
         </>

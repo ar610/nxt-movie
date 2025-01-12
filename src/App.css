@@ -132,3 +132,33 @@ button{
   display: flex;
   flex-direction: column;
 }
+.lottie-container {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  height: 40%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+#selected-card {
+  position: absolute;
+  top: 7%;  /* Match Lottie position */
+  left: 37%; /* Match Lottie position */
+ 
+  z-index: 5; /* Place the selected card above the Lottie animation */
+  pointer-events: none;
+  background-color: rgb(186, 255, 240);
+}
+.selected {
+  opacity: 0;  /* Make it transparent */
+  visibility: hidden;  /* Hide the element */
+  transition: opacity 1s ease, visibility 0s linear 1s; /* Smooth transition for opacity and delay visibility change */
+}
+
+.selected.display {
+  opacity: 1;  /* Make it fully visible */
+  visibility: visible;  /* Make the element visible */
+  transition: opacity 1s ease, visibility 0s linear 0s; /* Transition for opacity and instant visibility change */
+}
