@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  align-items: center;
 }
 
 
@@ -24,14 +25,43 @@
 
 .movieframe{
 
-  width:70vw;
-  height:50vh;
+  width: calc(63% - 10px);
+   height:50vh;
   border: 5px solid white;
   background-color: transparent;
-  
+  position: relative;
   overflow: hidden;
 
 }
+.movieframe.hasfog{
+
+  width: calc(63% - 10px);
+   height:50vh;
+  border: 5px solid white;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+
+}
+
+
+.movieframe.hasfog::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(46, 42, 42, 0); /* Initial transparent state */
+  backdrop-filter: blur(5px); /* Optional foggy blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For compatibility */
+  pointer-events: none; /* Keeps child interaction intact */
+  z-index: 1;
+  transition: background-color 2s ease-in-out; /* Smooth transition */
+}
+
+
+
 .cardcontainer{
 
   color: red;
@@ -74,15 +104,12 @@ button{
   height:40vh;
 }
 .cardcontainer.scrolling {
-  animation: scrollCards 1s linear infinite;
+  animation: scrollCards   linear infinite;
 }
 
 @keyframes scrollCards {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
+  to {
+    transform: translateX(-33.33333333%);
   }
 }
 
@@ -98,4 +125,10 @@ button{
 
 .scroll-btn:hover {
   background-color: #e03c00;
+}
+.mainpage-container{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
