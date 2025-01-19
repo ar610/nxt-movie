@@ -11,11 +11,14 @@ function Homepage(){
     const [isfog,setfog]=useState(false);
     const [isloading,setloader]=useState(false);
     const [isdisplayselected,setselected]=useState(false);
+    const [isselectedscroll,setselectedscroll]=useState(false);
+    
     const toggleScroll = () => {
         setIsScrolling(true); // Start scrolling
         setfog(false);
         setloader(false);
         setselected(false);
+        setselectedscroll(false);
         setTimeout(() => {
             setfog(true);
         }, 3000);
@@ -26,10 +29,12 @@ function Homepage(){
         setTimeout(() => {
             setIsScrolling(false);
             setloader(false);
+            setselectedscroll(true);
         }, 5000);
         setTimeout(() => {
             setselected(true);
         },4900);
+        
     };
     return(
         <>
@@ -42,7 +47,7 @@ function Homepage(){
                 </h1>
                 <h2>Your Movie Bucket List</h2>
                 <AddMovie />
-                <MovieContainer scroll={isScrolling} fog={isfog} loading={isloading} selected={isdisplayselected}/>
+                <MovieContainer scroll={isScrolling} fog={isfog} loading={isloading} selected={isdisplayselected} selectedscroll={isselectedscroll}/>
                 <button onClick={toggleScroll} className="scroll-btn">
                     Spin
                 </button>

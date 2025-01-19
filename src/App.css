@@ -99,6 +99,8 @@ button{
 .cardproperty{
   height:40vh;
   margin: 5px;
+  width: 190px;
+  
 }
 .cardproperty img{
   height:40vh;
@@ -145,7 +147,7 @@ button{
 #selected-card {
   position: absolute;
   top: 7%;  /* Match Lottie position */
-  left: 37%; /* Match Lottie position */
+  left: 36%; /* Match Lottie position */
  
   z-index: 5; /* Place the selected card above the Lottie animation */
   pointer-events: none;
@@ -162,3 +164,4 @@ button{
   visibility: visible;  /* Make the element visible */
   transition: opacity 1s ease, visibility 0s linear 0s; /* Transition for opacity and instant visibility change */
 }
+

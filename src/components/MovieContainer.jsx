@@ -72,12 +72,12 @@ function MovieContainer(props) {
     {
       image:
         "https://images-cdn.ubuy.co.in/668f03f763dc6918441092c0-avengers-infinity-war-movie-poster.jpg",
-      name: "Avengers",
+      name: "Avengers adsfjaskfjadskfj;alskfj;adslkfj;ksadfl",
     },
     {
       image:
         "https://images-cdn.ubuy.co.in/668f03f763dc6918441092c0-avengers-infinity-war-movie-poster.jpg",
-      name: "Avengers",
+      name: "Avengers dfadsfdsggdfgdsgfsdgsdgfsdgdfsgd",
     },
   ];
 
@@ -107,10 +107,11 @@ function MovieContainer(props) {
         </div>
         {/* Conditionally render the Lottie animation container */}
         <div ref={lottieRef} className="lottie-container"></div>
-        <div id="selected-card" className={`selected ${props.selected ? "display" : ""}`}><Card
+        <div id="selected-card" className={`selected ${props.selected ? "display" : ""} `}>
+          <Card
           image={selectedCard ? selectedCard.image : ""}
-          name={selectedCard ? selectedCard.name : ""}
-        />
+          name=""
+          />
         </div>
       </div>
     </>
