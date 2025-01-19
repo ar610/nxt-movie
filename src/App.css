@@ -151,7 +151,9 @@ button{
  
   z-index: 5; /* Place the selected card above the Lottie animation */
   pointer-events: none;
-  background-color: rgb(186, 255, 240);
+  
+  background-color: beige;
+  overflow: hidden;
 }
 .selected {
   opacity: 0;  /* Make it transparent */

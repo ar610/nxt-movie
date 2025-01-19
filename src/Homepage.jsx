@@ -1,6 +1,7 @@
 import AddMovie from "./components/AddMovie";
 import LoginButton from "./assets/LoginButton.svg";
 import MovieContainer from "./components/MovieContainer";
+import MovieAdder from "./components/Addform";
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router";
 import { useUserAuth } from "./context/UserAuthContext";
@@ -67,6 +68,7 @@ function Homepage() {
           <h1 className="heading">NEXT MOVIE</h1>
           <h2>Your Movie Bucket List</h2>
           <AddMovie />
+          <MovieAdder />
           <MovieContainer
             scroll={isScrolling}
             fog={isfog}

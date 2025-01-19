@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../context/UserAuthContext";
 import BackVideo from "../assets/cinema.mp4";
+import { initializeUserMovies } from "../utils/firebase-movie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +18,8 @@ const Login = () => {
     e.preventDefault();
     setError("");
     try {
-      await logIn(email, password);
+      const userCredential = await logIn(email, password);
+      await initializeUserMovies(userCredential.user.uid);
       navigate("/home");
     } catch (err) {
       setError(err.message);
@@ -27,7 +29,8 @@ const Login = () => {
   const handleGoogleSignIn = async (e) => {
     e.preventDefault();
     try {
-      await googleSignIn();
+      const result = await googleSignIn();
+      await initializeUserMovies(result.user.uid);
       navigate("/home");
     } catch (error) {
       console.log(error.message);
