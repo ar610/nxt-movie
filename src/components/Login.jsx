@@ -53,7 +53,7 @@ const Login = () => {
           {error && <Alert variant="danger">{error}</Alert>}
 
           <Form onSubmit={handleSubmit} className="authform">
-            <div>
+            {/* <div>
               <label htmlFor="email">Email address</label>
               <br />
               <input
@@ -78,7 +78,7 @@ const Login = () => {
               <Button className="submitbtn" type="Submit">Log In</Button>
             </div>
             <br />
-            <hr />
+            <hr /> */}
           <div className="googlebutton">
             <GoogleButton
               className="g-btn"
@@ -90,9 +90,9 @@ const Login = () => {
           </Form>
           
 
-          <div >
+          {/* <div >
             Don't have an account? <Link to="/signup">Sign up</Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
