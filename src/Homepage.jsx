@@ -67,7 +67,7 @@ function Homepage() {
         <div className="mainpage-container">
           <h1 className="heading">NEXT MOVIE</h1>
           <h2>Your Movie Bucket List</h2>
-          <AddMovie />
+          {/* <AddMovie /> */}
           <MovieAdder />
           <MovieContainer
             scroll={isScrolling}

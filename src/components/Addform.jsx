@@ -43,7 +43,7 @@ function AddMovie() {
         placeholder="Movie Poster URL"
         required
       />
-      <button type="submit">Add Movie</button>
+      <button className="addition-button" type="submit">Add Movie</button>
     </form>
   );
 }
