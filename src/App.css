@@ -1,7 +1,7 @@
 #root {
-  max-width: 1280px;
+  width:100vw;
   margin: 0 auto;
-  padding: 2rem;
+  
   text-align: center;
   align-items: center;
 }
@@ -151,7 +151,9 @@ button{
  
   z-index: 5; /* Place the selected card above the Lottie animation */
   pointer-events: none;
-  background-color: rgb(186, 255, 240);
+  
+  background-color: beige;
+  overflow: hidden;
 }
 .selected {
   opacity: 0;  /* Make it transparent */
@@ -165,3 +167,93 @@ button{
   transition: opacity 1s ease, visibility 0s linear 0s; /* Transition for opacity and instant visibility change */
 }
 
+
+.authpage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+ 
+}
+
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
+  z-index: -1;
+  object-fit: cover; /* Ensures the video covers the entire screen */
+  opacity: 50%;
+  background-color: black;
+}
+
+/* Content styling */
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Black overlay with 50% opacity */
+  z-index: -1;
+}
+
+.googlebutton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.authform{
+  text-align: left;
+  display:flex;
+  flex-direction: column;
+}
+
+.authpage input{
+  margin: 0px;
+  margin-bottom: 20px;
+}
+
+.submitbtncontainer{
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.submitbtn{
+  background-color: rgb(212, 207, 248);
+  border-radius: 5px;
+}
+.submitbtn:hover{
+  background-color: azure;
+}
+.homecontainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  
+  
+ 
+}
+
+.addition-button{
+  color: white;
+}

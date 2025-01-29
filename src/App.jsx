@@ -1,24 +1,27 @@
+
+import { useState } from 'react'
+import Homepage from './Homepage'
+import './App.css'
+
 import { Container, Row, Col } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
-import Home from "./Homepage.jsx";
+
 import Login from "./components/Login";
-import Signup from "./components/SignUp.jsx";
+import Signup from "./components/SignUp";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
-import "./index.css"
 function App() {
   return (
-    <Container style={{ width: "400px" }}>
-      <Row>
-        <Col>
-          <UserAuthContextProvider>
+
+    <>
+      <UserAuthContextProvider>
             <Routes>
               <Route
                 path="/home"
                 element={
                   <ProtectedRoute>
-                    <Home />
+
+                    <Homepage />
                   </ProtectedRoute>
                 }
               />
@@ -26,10 +29,9 @@ function App() {
               <Route path="/signup" element={<Signup />} />
             </Routes>
           </UserAuthContextProvider>
-        </Col>
-      </Row>
-    </Container>
-  );
+
+    </>
+  )
 }
 
 export default App;

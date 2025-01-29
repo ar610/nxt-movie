@@ -4,6 +4,8 @@ import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../context/UserAuthContext";
+import BackVideo from "../assets/cinema.mp4";
+import { initializeUserMovies } from "../utils/firebase-movie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +18,8 @@ const Login = () => {
     e.preventDefault();
     setError("");
     try {
-      await logIn(email, password);
+      const userCredential = await logIn(email, password);
+      await initializeUserMovies(userCredential.user.uid);
       navigate("/home");
     } catch (err) {
       setError(err.message);
@@ -26,7 +29,8 @@ const Login = () => {
   const handleGoogleSignIn = async (e) => {
     e.preventDefault();
     try {
-      await googleSignIn();
+      const result = await googleSignIn();
+      await initializeUserMovies(result.user.uid);
       navigate("/home");
     } catch (error) {
       console.log(error.message);
@@ -35,46 +39,61 @@ const Login = () => {
 
   return (
     <>
-      <div className="p-4 box">
-        <h2 className="mb-3">Firebase/ React Auth Login</h2>
+      <div className="authpage">
+        <video autoPlay loop muted playsInline className="background-video">
+          <source src={BackVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="overlay"></div>
+        <div className="content">
+          <h1 className="heading">NXT MOVIE</h1>
+          <br/>
+          <br/>
 
-        {error && <Alert variant="danger">{error}</Alert>}
+          {error && <Alert variant="danger">{error}</Alert>}
 
-        <Form onSubmit={handleSubmit}>
-          
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control
-              type="email"
-              placeholder="Email address"
+          <Form onSubmit={handleSubmit} className="authform">
+            <div>
+              <label htmlFor="email">Email address</label>
+              <br />
+              <input
+                type="email"
+                id="email"
+                placeholder="Email address"
+                onChange={(e) => setEmail(e.target.value)}
+                autoComplete="off"
+              />
+            </div>
+
+            <label htmlFor="password">Password</label>
+            
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
               onChange={(e) => setEmail(e.target.value)}
             />
-          </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
+            <div className="submitbtncontainer">
+              <Button className="submitbtn" type="Submit">Log In</Button>
+            </div>
+            <br />
+            <hr />
+          <div className="googlebutton">
+            <GoogleButton
+              className="g-btn"
+              type="dark"
+              onClick={handleGoogleSignIn}
             />
-          </Form.Group>
-
-          <div className="d-grid gap-2">
-            <Button variant="primary" type="Submit">
-              Log In
-            </Button>
           </div>
-        </Form>
-        <hr />
-        <div>
-          <GoogleButton
-            className="g-btn"
-            type="dark"
-            onClick={handleGoogleSignIn}
-          />
+          <br />
+          </Form>
+          
+
+          <div >
+            Don't have an account? <Link to="/signup">Sign up</Link>
+          </div>
         </div>
-      </div>
-      <div className="p-4 box mt-3 text-center">
-        Don't have an account? <Link to="/signup">Sign up</Link>
       </div>
     </>
   );

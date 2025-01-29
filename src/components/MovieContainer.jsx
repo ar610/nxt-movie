@@ -3,7 +3,52 @@ import React, { useEffect, useRef, useState } from "react";
 import Lottie from "lottie-web"; // Import Lottie library
 import animationData from "../assets/Animation - 1736710763838.json";
 
+import { useUserAuth } from "../context/UserAuthContext";
+import { getUserMovies, updateSelectedMovie } from '../utils/firebase-movie';
+
+import { db } from '../firebase';
+import { doc, onSnapshot } from 'firebase/firestore';
+
 function MovieContainer(props) {
+
+
+  const { user } = useUserAuth();
+  const [cards, setCards] = useState([]);
+
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      if (user?.uid) {
+        const userMovies = await getUserMovies(user.uid);
+        setCards(userMovies);
+      }
+    };
+    fetchMovies();
+  }, [user]);
+
+
+  useEffect(() => {
+    if (!user?.uid) return;
+
+    // Create a reference to the user's document
+    const userDocRef = doc(db, 'users', user.uid);
+
+    // Set up real-time listener
+    const unsubscribe = onSnapshot(userDocRef, (doc) => {
+      if (doc.exists()) {
+        const userData = doc.data();
+        setCards(userData.movies || []);
+      } else {
+        setCards([]);
+      }
+    }, (error) => {
+      console.error("Error fetching movies:", error);
+    });
+
+    // Clean up listener on unmount
+    return () => unsubscribe();
+  }, [user]);
+
   const cardContainerRef = useRef(null);
   const [selectedCard, setSelectedCard] = useState(null); // State to store selected card
 
@@ -57,7 +102,7 @@ function MovieContainer(props) {
       }
     }
   }, [props.scroll]); // Re-run this effect when `scroll` changes
-
+/*
   const cards = [
     {
       image:
@@ -80,9 +125,10 @@ function MovieContainer(props) {
       name: "Avengers dfadsfdsggdfgdsgfsdgsdgfsdgdfsgd",
     },
   ];
+  */
 
   // Duplicate cards to create an infinite loop effect
-  const duplicatedCards = [...cards, ...cards, ...cards];
+  const duplicatedCards = [...cards, ...cards, ...cards,...cards, ...cards, ...cards];
 
   const selectRandomCard = () => {
     const randomIndex = Math.floor(Math.random() * cards.length);
