@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import Homepage from './Homepage'
 import './App.css'
@@ -9,10 +10,9 @@ import Login from "./components/Login";
 import Signup from "./components/SignUp";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
-
 function App() {
-
   return (
+
     <>
       <UserAuthContextProvider>
             <Routes>
@@ -20,6 +20,7 @@ function App() {
                 path="/home"
                 element={
                   <ProtectedRoute>
+
                     <Homepage />
                   </ProtectedRoute>
                 }
@@ -28,8 +29,9 @@ function App() {
               <Route path="/signup" element={<Signup />} />
             </Routes>
           </UserAuthContextProvider>
+
     </>
   )
 }
 
-export default App
+export default App;

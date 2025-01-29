@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import { useUserAuth } from "./context/UserAuthContext";
 import BackVideo from "./assets/cinema.mp4";
 import Lottie from "lottie-web"; // Import Lottie library
+
 function Homepage() {
   const { logOut, user } = useUserAuth();
   const navigate = useNavigate();
