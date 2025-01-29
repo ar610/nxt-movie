@@ -1,8 +1,4 @@
-# React + Vite
+NXT-MOVIE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A web application with a visually appealing UI, allowing users to create a personalized movie watchlist. Features a dynamic spin wheel for random selection and Firebase authentication for a seamless experience. 
+The current version enable user to add the name and imageurl to the movie they what to watch and add that in bucket list.
