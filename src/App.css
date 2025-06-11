@@ -1,42 +1,24 @@
 #root {
   width:100vw;
   margin: 0 auto;
-  
   text-align: center;
-  align-items: center;
+  
 }
 
-
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
 
 .movieframe{
-
   width: calc(63% - 10px);
    height:50vh;
   border: 5px solid white;
   background-color: transparent;
   position: relative;
   overflow: hidden;
-
 }
+
 .movieframe.hasfog{
 
   width: calc(63% - 10px);
-   height:50vh;
+  height:50vh;
   border: 5px solid white;
   background-color: transparent;
   position: relative;
@@ -52,19 +34,19 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(46, 42, 42, 0); /* Initial transparent state */
-  backdrop-filter: blur(5px); /* Optional foggy blur effect */
-  -webkit-backdrop-filter: blur(10px); /* For compatibility */
-  pointer-events: none; /* Keeps child interaction intact */
+  background-color: rgba(46, 42, 42, 0); 
+  backdrop-filter: blur(5px); 
+  -webkit-backdrop-filter: blur(10px); 
+  pointer-events: none; 
   z-index: 1;
-  transition: background-color 2s ease-in-out; /* Smooth transition */
+  transition: background-color 2s ease-in-out; 
 }
 
 
 
 .cardcontainer{
 
-  color: red;
+  color: rgb(255, 255, 255);
   width:70vw;
   height:50vh;
   background-color: transparent;
@@ -78,28 +60,22 @@
 input{
   margin: 20px;
   height: 30px;
-  width: 30vw;
+  width: 20vw;
   padding-left: 10px;
   margin-right:0px;
+  font-size: 1.5rem;
 
 }
 button{
   border-radius: 0;
 }
 
-.loginimage{
-  z-index: 2;
-  position: absolute;
-  top:20px;
-  right: 20px;
-  width:3vw;
 
-  
-}
 .cardproperty{
   height:40vh;
   margin: 5px;
   width: 190px;
+  border-width: 3px;
   
 }
 .cardproperty img{
@@ -118,15 +94,15 @@ button{
 .scroll-btn {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #ff4500;
+  background-color: #000d1e51;
   color: white;
-  border: none;
+  border: 2px solid white; /* <-- Correct border syntax */
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 2rem;
 }
-
 .scroll-btn:hover {
-  background-color: #e03c00;
+  background-color: #1640a1;
+  border: 2px solid white; /* keep it consistent */
 }
 .mainpage-container{
   align-items: center;
@@ -146,25 +122,29 @@ button{
 
 #selected-card {
   position: absolute;
-  top: 7%;  /* Match Lottie position */
-  left: 36%; /* Match Lottie position */
- 
-  z-index: 5; /* Place the selected card above the Lottie animation */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
   pointer-events: none;
-  
-  background-color: beige;
   overflow: hidden;
+
+  border: 5px solid white; 
+  background-color: rgba(255, 255, 255, 0.05); 
+ 
+  padding: 10px;
 }
+
 .selected {
-  opacity: 0;  /* Make it transparent */
-  visibility: hidden;  /* Hide the element */
-  transition: opacity 1s ease, visibility 0s linear 1s; /* Smooth transition for opacity and delay visibility change */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease, visibility 0s linear 1s;
 }
 
 .selected.display {
-  opacity: 1;  /* Make it fully visible */
-  visibility: visible;  /* Make the element visible */
-  transition: opacity 1s ease, visibility 0s linear 0s; /* Transition for opacity and instant visibility change */
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease, visibility 0s linear 0s;
 }
 
 
@@ -254,6 +234,28 @@ button{
  
 }
 
-.addition-button{
+
+.add-button{
   color: white;
+  font-size: 1.5rem;
+    border:solid white 1px
+
+}
+
+@media (max-width: 768px) {
+  .add-movie-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .inputfield{
+    width: 80%;
+  }
+  .add-button{
+  color: white;
+  font-size: 1.5rem;
+  border:solid white 1px
+}
 }

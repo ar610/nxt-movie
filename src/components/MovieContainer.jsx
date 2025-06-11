@@ -1,38 +1,22 @@
 import Card from "./Card";
-import React, { useEffect, useRef, useState } from "react";
+import  { useEffect, useRef, useState } from "react";
 import Lottie from "lottie-web"; // Import Lottie library
 import animationData from "../assets/Animation - 1736710763838.json";
 
 import { useUserAuth } from "../context/UserAuthContext";
-import { getUserMovies, updateSelectedMovie } from '../utils/firebase-movie';
+import { getUserMovies } from '../utils/firebase-movie';
 
 import { db } from '../firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
 
 function MovieContainer(props) {
 
-
   const { user } = useUserAuth();
   const [cards, setCards] = useState([]);
 
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      if (user?.uid) {
-        const userMovies = await getUserMovies(user.uid);
-        setCards(userMovies);
-      }
-    };
-    fetchMovies();
-  }, [user]);
-
-
   useEffect(() => {
     if (!user?.uid) return;
-
-    // Create a reference to the user's document
     const userDocRef = doc(db, 'users', user.uid);
-
     // Set up real-time listener
     const unsubscribe = onSnapshot(userDocRef, (doc) => {
       if (doc.exists()) {
@@ -44,17 +28,16 @@ function MovieContainer(props) {
     }, (error) => {
       console.error("Error fetching movies:", error);
     });
-
-    // Clean up listener on unmount
     return () => unsubscribe();
   }, [user]);
 
   const cardContainerRef = useRef(null);
+
   const [selectedCard, setSelectedCard] = useState(null); // State to store selected card
 
   const lottieRef = useRef(null);
-  console.log(props.loading);
 
+  //TO SHOW THE LOADING ANIMATION
   useEffect(() => {
     if (props.loading) {
       if (!lottieRef.current) {
@@ -74,19 +57,20 @@ function MovieContainer(props) {
     }
   }, [props.loading]); // Only run when `props.loading` changes
 
+
+  //to make the cards scroll
   useEffect(() => {
     const cardContainer = cardContainerRef.current;
 
     if (cardContainer) {
       if (props.scroll) {
-        // Start scrolling animation
-        const duration = cardContainer.style.animationDuration || "1s"; // Fallback to default duration
+
         cardContainer.style.animation = `scrollCards linear infinite`;
+
         if (cardContainer) {
-          // Get the total number of cards
+
           const totalCards = cardContainer.children.length;
 
-          // Calculate animation duration (e.g., 0.1s per card, minimum 1s)
           const duration = Math.min(0.05 * totalCards, 1);
 
           // Dynamically update the animation duration in the card container
@@ -137,8 +121,8 @@ function MovieContainer(props) {
 
   // Call the selectRandomCard function when the component mounts or on button click
   useEffect(() => {
-    selectRandomCard(); // Randomly select a card when the component mounts
-  }, [props.scroll]); // Empty dependency array means it will run once on mount
+    selectRandomCard(); 
+  }, [props.scroll]); 
 
   return (
     <>
