@@ -1,5 +1,23 @@
-NXT-MOVIE
+🎬 NXT Movie – Your Personal Movie Watchlist
+NXT Movie is a simple and fun web app that helps you manage your personal movie watchlist. Just type the name of a movie, and the app fetches the poster and adds it to your collection. You can add and delete movies anytime.
 
-A web application with a visually appealing UI, allowing users to create a personalized movie watchlist. Features a dynamic spin wheel for random selection and Firebase authentication for a seamless experience. 
-The current version enable user to add the name and imageurl to the movie they what to watch and add that in bucket list.
-https://github.com/user-attachments/assets/67e7ec3d-8f5f-4f7a-a2b8-5b7a32575e29
+Feeling indecisive about what to watch next? Use the Spin the Wheel feature to randomly pick a movie from your list — perfect for those "I don't know what to watch" moments!
+
+✨ Features
+🎥 Add movies by typing the name (poster fetched automatically)
+
+🗑️ Delete movies from your list
+
+🎡 Spin the wheel to randomly select a movie
+
+📃 Personalized movie list view
+
+⚠️ Disclaimer
+This website uses web scraping to fetch movie posters from IMDb. Please note that this method may go against IMDb’s usage policies. The project is created solely for educational purposes and not intended for commercial use.
+
+
+
+
+
+
+
