@@ -9,7 +9,7 @@ function AddMovie() {
 
   const fetchMoviePoster = async (movieName) => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/get-movie-poster', {
+      const response = await fetch('https://nxt-movie-1.onrender.com/get-movie-poster', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
